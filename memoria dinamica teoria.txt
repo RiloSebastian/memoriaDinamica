@@ -1,0 +1,76 @@
+un puntero guarda una direccion de memoria. no solo de una variable sino tambien de una 
+direccion de memoria que me da el sistema
+
+cuando creamos estas variables. las guardamos en la memoria de pila
+al crear una estructura se guarda en una direccion de memoria
+al crear el puntero se guarda en otra direccion de memoria
+ambas cosas se hacen en la pila/stack.
+
+la pila de memoria es un segmento muy acortado en cuanto a tamaño (alrededor de 512k)
+cuando guardamos un tipo de dato. todo queda en un segmento de la pila
+
+si guardamos todo en la pila podemos desbordar el programa (un stack overflow).
+por eso programar con la pila no es una practica sana.
+
+la idea es mantener los punteros dentro de la pila y que esos punteros apunten a otro
+segmento de memoria llamado heap/ monton
+
+el monton es un segmento de memoria mucho mas grande que la pila y mas dinamico.
+en el heap se puede liberar y agregar espacio de memoria segun se desee
+
+cuando temina un marco de ejecucion de una funcion en la pila se libera la memoria.
+pero no se puede elegir como en el heap.
+
+
+a partir de ahora. punteros en stack y datos en Heap.
+
+
+para reservar memoria en el heap esta la funcion malloc
+
+la funcion malloc reserva una cantidad de bytes consecutivos para despues guardarlo
+devuelve un tipo de dato void que puede representar cualquier tipo de dato. o puede devolver
+NULL.
+
+como malloc devuelve un puntero a void(que puede significar cualquier cosa)
+tenemos que 'vestir' al malloc con el tipo de dato que queremos reservar en el heap.
+en este caso un puntero a la estructura.
+
+si pedimos una cantidad exseciva de bytes nos va a devolver un tipo de dato NULL.
+por eso en malloc siempre se trabaja con un sizeof.
+
+	[conceptos nuevos:
+	{
+	{polimorfismo: el 'vestir' un puntero a void como hacemos en la funcion malloc.
+	{
+	{encapsulamiento:ocultar a otros objetos, los detalles de como esta implementada
+	{cada funcion que hace el programa. no vamos a poder ver los campos de una estuctura.
+	{esto se usa mucho en programacion orientada a objetos.
+	{
+	{la funcion setter: es darle un valor a un campo.
+	{
+	{getter es una funcion que me permite obtener campos;
+
+
+
+si quiero reasignar espacion en memoria lo hago con una funcion llamada realloc. que sirve 
+justamente para reasignar espacio en la memoria heap
+
+al hacer realloc le voy a pasar un sizeof del tipo de dato que quiero asignar
+y multiplicarlo por la cantidad de espacio total que nesecito.
+
+si a continuacion del espacio reservado con malloc, el sistema uso los
+siguientes bits para guardar otra variable. al querer hacer el realloc el sistema 
+va a tener que buscar otro espacio con la cantidad de bits continuos requeridos y 
+reassignar la direccion del puntero.
+
+esto puede provocar 3 resultados.
+
+que encuentre el espacio.
+
+que no encuentre el espacio y reasigne el valor(mas probable con gran cantidad de bits)
+
+que no encuentre el espacio y devuelva null.(mas probable con gran cantidad de bits)
+
+en el ultimo caso se perderia la data que queriamos reasignar en otro espacio.
+para evitar esto, se hace una variable auxiliar y se le asigna la direccion de la variable
+ que queremos guardar en memoria 

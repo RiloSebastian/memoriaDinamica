@@ -7,7 +7,7 @@ char nombre[50];
 int id;
 
 }ePersona;
-
+int persona_producto(ePersona*);//terminar. tiene que hacer el malloc automaticamente
 int epersona_setId(ePersona*, int);
 int epersona_setNombre(ePersona*, char*);
 int epersona_getId (ePersona*);
