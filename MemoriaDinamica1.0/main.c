@@ -7,7 +7,8 @@ char nombre[50];
 int id;
 
 }ePersona;
-int persona_producto(ePersona*);//terminar. tiene que hacer el malloc automaticamente
+
+ePersona* newpersona();
 int epersona_setId(ePersona*, int);
 int epersona_setNombre(ePersona*, char*);
 int epersona_getId (ePersona*);
@@ -17,11 +18,13 @@ int main()
     ePersona* pPersona;//puntero
 
 
-    pPersona= (ePersona*)/*para saber que tipo de dato recibe el puntero a void*/ malloc(sizeof(ePersona));// malloc reserva una cantidad de bytes consecutivos en memoria para guardar el tipo de dato
+   /* pPersona= (ePersona*)para saber que tipo de dato recibe el puntero a void -- malloc(sizeof(ePersona));// malloc reserva una cantidad de bytes consecutivos en memoria para guardar el tipo de dato
     //dejo de apuntar al stack y ahora apunta al heap.
-    /*es como hacer
+    es como hacer
     epersona= &persona
     */
+
+    pPersona=newpersona();
 
     if(pPersona!=NULL){ //para asegurarse de que no sea null
      if(epersona_setId(pPersona,45)==-1){
@@ -36,6 +39,7 @@ int main()
       }
      }
     }
+
     return 0;
 }
 
@@ -79,4 +83,13 @@ char* ret = NULL;
  }
 
 return ret;
+}
+
+ePersona* newpersona(){
+
+ePersona* persona;
+
+persona = (ePersona*) malloc(sizeof(ePersona));
+
+return persona;
 }
