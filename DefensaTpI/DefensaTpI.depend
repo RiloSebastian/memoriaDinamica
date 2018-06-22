@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1529668597 source:d:\##clonegit\defensatpi\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1529668684 d:\##clonegit\defensatpi\arraylist.h
+
+1529677901 source:d:\##clonegit\defensatpi\paciente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"paciente.h"
+
+1529677808 d:\##clonegit\defensatpi\paciente.h
+
+1529677808 source:d:\##clonegit\defensatpi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"paciente.h"
+
